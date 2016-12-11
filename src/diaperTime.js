@@ -28,7 +28,10 @@ var Promise = require("promise");
 				lastDiaper.hour = /\d{1,2}(?=h)/g.exec(diaperString);
 				if (lastDiaper.hour){
 					lastDiaper.hour = parseInt(lastDiaper.hour);
-					lastDiaper.minute = parseInt(/h(\d{1,2})/g.exec(diaperString).slice(1));
+					lastDiaper.minute = parseInt(/h(\d{1,2})/g.exec(diaperString));
+						if (lastDiaper.minute) {
+							lastDiaper.minute = lastDiaper.minute.slice(1);
+						}
 				} else {
 					lastDiaper.minute = parseInt(/\d{1,2}(?=min)/g.exec(diaperString));
 				}
