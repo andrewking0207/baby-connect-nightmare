@@ -56,6 +56,18 @@ Example Response:
 
 ### DIAPER
 
+Gets the elapsed time since last diaper change.
+
+`GET /diaper/{kid124567890}?email=something@something.com&password=password`
+
+Example Response:
+```
+{
+	"hour": 1,
+	"minute": "24"
+}
+```
+
 Enters a diaper change at the current time.
 
 `POST /diaper`
@@ -74,6 +86,18 @@ Type is one of 'bm', 'bmWet', or 'wet'.
 
 
 ### BOTTLE
+
+Gets the elapsed time since last feeding.
+
+`GET /bottle/{kid124567890}?email=something@something.com&password=password`
+
+Example Response:
+```
+{
+	"hour": 1,
+	"minute": "24"
+}
+```
 
 Enters a bottle taken at the current time.
 
