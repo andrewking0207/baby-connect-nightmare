@@ -24,7 +24,7 @@ module.exports = function (email, password, kidId, type) {
 			typeSelector = "#diaper3";
 			break;
 		default:
-			reject("Unknown type");
+			reject("Unknown diaper type");
 			return;
 		}
 
