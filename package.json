@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jpchip/baby-connect-nightmare.git"
+    "url": "git+https://github.com/andrewking0207/baby-connect-nightmare.git"
   },
   "keywords": [
     "Baby",
@@ -38,5 +38,9 @@
   },
   "devDependencies": {
     "eslint": "^2.13.1"
+  },
+  "scripts": {
+    "preinstall": "apt-get update && apt-get install -y libgtk2.0-0 libgconf-2-4 libasound2 libxtst6 libxss1 libnss3 xvfb",
+    "start": "xvfb-run -a node build/server/index"
   }
 }
