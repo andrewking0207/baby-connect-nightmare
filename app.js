@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
@@ -6,6 +8,10 @@ var bottle = require("./src/bottle");
 var kids = require("./src/kids");
 var bottleTime = require("./src/bottleTime");
 var diaperTime = require("./src/diaperTime");
+var fs = require("fs");
+var https = require("https");
+var http = require("http");
+
 
 app.use(bodyParser.json());
 
@@ -57,6 +63,10 @@ app.post("/bottle", function (req, res) {
 	});
 });
 
-app.listen(process.env.PORT || 3000, function () {
-	console.log("baby-connect-nightmare app listening on port 3000!");
+// app.listen(process.env.PORT || 3000, function () {
+// 	console.log("baby-connect-nightmare app listening on port 3000!");
+// });
+
+https.createServer(options, app).listen(3033, function () {
+   console.log('Started!');
 });

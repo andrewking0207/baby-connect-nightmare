@@ -30,7 +30,10 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "nightmare": "^2.8.1",
-    "promise": "^7.1.1"
+    "promise": "^7.1.1",
+    "https": "1.0.0",
+    "fs": "0.0.1-security",
+    "http": "0.0.0"
   },
   "engine": {
     "node": "5.2.x",
@@ -38,9 +41,5 @@
   },
   "devDependencies": {
     "eslint": "^2.13.1"
-  },
-  "scripts": {
-    "preinstall": "apt-get update && apt-get install -y libgtk2.0-0 libgconf-2-4 libasound2 libxtst6 libxss1 libnss3 xvfb",
-    "start": "xvfb-run -a node build/server/index"
   }
 }
