@@ -8,7 +8,7 @@ var Promise = require("promise");
  * @returns {promise}
  * @todo  split out login and kid select logic
  */
- module.exports = function (email, password, kidId) {
+ module.exports = function (email, password) {
 	return new Promise(function (fulfill, reject){
 		var timeSinceBottle;
 		var babyConnect = new Nightmare()
@@ -20,17 +20,15 @@ var Promise = require("promise");
 			.wait(100)
 			.click("#save")
 			.wait(5000)
-			.click("#" + kidId + " > a")
-			.wait(500)
 			.evaluate(function() {
 				var lastBottle = {};
 				var bottleString = document.querySelector('#ago_bib').innerText;
 				lastBottle.hour = /\d{1,2}(?=h)/g.exec(bottleString);
 				if (lastBottle.hour){
 					lastBottle.hour = parseInt(lastBottle.hour);
-					lastBottle.minute = parseInt(/h(\d{1,2})/g.exec(bottleString));
+					lastBottle.minute = /h(\d{1,2})/g.exec(bottleString);
 						if (lastBottle.minute) {
-							lastBottle.minute = lastBottle.minute.slice(1);
+							lastBottle.minute = parseInt(lastBottle.minute.slice(1));
 					}
 				} else {
 					lastBottle.minute = parseInt(/\d{1,2}(?=min)/g.exec(bottleString));

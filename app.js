@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!xvfb-run -a node
 
 var express = require("express");
 var bodyParser = require("body-parser");
@@ -23,8 +23,8 @@ app.get("/kids", function (req, res) {
 	});
 });
 
-app.get("/diaper/:kidId", function (req, res) {
-	diaperTime(req.query.email, req.query.password, req.params.kidId).then(function(diaperTime) {
+app.get("/diaper", function (req, res) {
+	diaperTime(req.query.email, req.query.password).then(function(diaperTime) {
 		res.status(200).json(diaperTime);
 	}).catch(function (error) {
 		res.status(500).json({ error: error });
@@ -43,8 +43,8 @@ app.post("/diaper", function (req, res) {
 	});
 });
 
-app.get("/bottle/:kidId", function (req, res) {
-	bottleTime(req.query.email, req.query.password, req.params.kidId).then(function(bottleTime) {
+app.get("/bottle", function (req, res) {
+	bottleTime(req.query.email, req.query.password).then(function(bottleTime) {
 		res.status(200).json(bottleTime);
 	}).catch(function (error) {
 		res.status(500).json({ error: error });
@@ -63,10 +63,10 @@ app.post("/bottle", function (req, res) {
 	});
 });
 
-// app.listen(process.env.PORT || 3000, function () {
-// 	console.log("baby-connect-nightmare app listening on port 3000!");
-// });
-
-https.createServer(options, app).listen(3033, function () {
-   console.log('Started!');
+app.listen(process.env.PORT || 3000, function () {
+	console.log("baby-connect-nightmare app listening on port 3000!");
 });
+
+// https.createServer(options, app).listen(3033, function () {
+//    console.log('Started!');
+// });
