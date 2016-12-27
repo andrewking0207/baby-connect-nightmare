@@ -19,7 +19,7 @@ var Promise = require("promise");
 			.type("#pass", password)
 			.wait(100)
 			.click("#save")
-			.wait(5000)
+			.wait(2000)
 			.evaluate(function() {
 				var lastBottle = {};
 				var bottleString = document.querySelector('#ago_bib').innerText;

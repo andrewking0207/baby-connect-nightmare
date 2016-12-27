@@ -19,7 +19,7 @@ var Promise = require("promise");
 			.type("#pass", password)
 			.wait(100)
 			.click("#save")
-			.wait(5000)
+			.wait(2000)
 			.evaluate(function() {
 				var lastDiaper = {};
 				var diaperString = document.querySelector('#ago_diaper').innerText;
