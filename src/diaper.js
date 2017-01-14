@@ -4,12 +4,11 @@ var Promise = require("promise");
 /**
  * @param {string} email
  * @param {string} password
- * @param {string} kidId (eg. 'kid123456')
  * @param {string} type
  * @returns {promise}
  * @todo split out login and kid select logic
  */
-module.exports = function (email, password, kidId, type) {
+module.exports = function (email, password, type) {
 	return new Promise(function (fulfill, reject){
 
 		var typeSelector = null;
@@ -37,8 +36,6 @@ module.exports = function (email, password, kidId, type) {
 			.wait(100)
 			.click("#save")
 			.wait(5000)
-			.click("#" + kidId + " > a")
-			.wait(500)
 			.click("a[href='javascript:showDiaperDlg()']")
 			.wait(500)
 			.click(typeSelector)

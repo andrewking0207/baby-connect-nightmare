@@ -36,7 +36,7 @@ app.post("/diaper", function (req, res) {
 		return res.sendStatus(400);
 	}
 
-	diaper(req.body.email, req.body.password, req.body.kidId, req.body.type).then(function() {
+	diaper(req.body.email, req.body.password, req.body.type).then(function() {
 		res.status(200).json({});
 	}).catch(function (error) {
 		res.status(500).json({ error: error });
@@ -56,7 +56,7 @@ app.post("/bottle", function (req, res) {
 		return res.sendStatus(400);
 	}
 
-	bottle(req.body.email, req.body.password, req.body.kidId, req.body.type, req.body.quantity).then(function() {
+	bottle(req.body.email, req.body.password, req.body.quantity).then(function() {
 		res.status(200).json({});
 	}).catch(function (error) {
 		res.status(500).json({ error: error });

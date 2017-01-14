@@ -4,28 +4,16 @@ var Promise = require("promise");
 /**
  * @param {string} email
  * @param {string} password
- * @param {string} kidId (eg. 'kid123456')
  * @param {string} type
  * @param {number} quantity (in ounces)
  * @returns {promise}
  * @todo split out login and kid select logic
  */
-module.exports = function (email, password, kidId, type, quantity) {
+module.exports = function (email, password, quantity) {
 	return new Promise(function (fulfill, reject){
 
-		var typeSelector = null;
-		switch(type) {
-		case "milk":
-			typeSelector = "#bibMilk";
-			break;
-		case "formula":
-			typeSelector = "#bibFormula";
-			break;
-		default:
-			reject("Unknown type");
-			return;
-		}
-
+		var typeSelector = "#bibMilk";		
+		
 		var babyConnect = new Nightmare()
 			.goto("https://www.baby-connect.com/login")
 			.wait("#email")
@@ -35,8 +23,6 @@ module.exports = function (email, password, kidId, type, quantity) {
 			.wait(100)
 			.click("#save")
 			.wait(5000)
-			.click("#" + kidId + " > a")
-			.wait(500)
 			.click("a[href='javascript:showBibDlg()']")
 			.wait(500)
 			.click(typeSelector)
