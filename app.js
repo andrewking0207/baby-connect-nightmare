@@ -10,9 +10,38 @@ var diaperTime = require("./src/diaperTime");
 var fs = require("fs");
 var https = require("https");
 var http = require("http");
+var swaggerJSDoc = require('swagger-jsdoc');
+
+// swagger definition
+var swaggerDefinition = {
+  info: {
+    title: 'Node Swagger API',
+    version: '1.0.0',
+    description: 'Demonstrating how to describe a RESTful API with Swagger',
+  },
+  host: 'localhost:3000',
+  basePath: '/',
+};
+// options for the swagger docs
+var options = {
+  // import swaggerDefinitions
+  swaggerDefinition: swaggerDefinition,
+  // path to the API docs
+  apis: ['./routes/*.js'],
+};
+
+// initialize swagger-jsdoc
+var swaggerSpec = swaggerJSDoc(options);
 
 
 app.use(bodyParser.json());
+
+// serve swagger
+app.get("/swagger.json", function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
+});
+
 
 app.get("/kids", function (req, res) {
 	kids(req.query.email, req.query.password).then(function(kids) {
